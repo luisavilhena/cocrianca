@@ -1,4 +1,3 @@
-<!--?php /* Template name: Blog List */ ?-->
 <?php
 
 get_header(); ?>
