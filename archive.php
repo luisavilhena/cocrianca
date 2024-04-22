@@ -1,7 +1,8 @@
 <?php
     get_header();
     $get_posts_blog = get_posts([
-        'taxonomy' => 'post',
+        'post_type' => 'post',
+        'post_status' => 'publish',
         'order'  => 'desc',
         'posts_per_page' => -1,
     ]);
