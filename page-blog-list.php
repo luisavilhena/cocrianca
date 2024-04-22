@@ -3,7 +3,7 @@
 
 get_header(); ?>
 
-<main id="blog-list" class="structure-container teste">
+<main id="blog-list" class="structure-container">
 	<?php while (have_posts()) : the_post(); ?>
 		<div class="structure-container__all-content structure-container__side">
 			<?php
@@ -11,7 +11,7 @@ get_header(); ?>
 			$Id= $latest_cpt[0]->ID;
 			$Title= get_the_title($Id);
 			$Excerpt= get_the_excerpt($Id);
-			$Thumbnail=get_the_post_thumbnail('horizontal-c');
+			$Thumbnail=get_the_post_thumbnail($Id, 'horizontal-c');
 			$Author= get_the_author($Id);	
 			$Link = get_permalink($Id)			
 			?>
@@ -36,7 +36,7 @@ get_header(); ?>
 					$postId = $value->ID;
 					$url=get_permalink($value->ID);
 					$tags=get_the_tags($value->ID);
-					$thumbnail= get_the_post_thumbnail($value->ID);
+					$thumbnail= get_the_post_thumbnail($value->ID, 'horizontal-c');
 					$title=$value->post_title;
 					if($postId==$Id){
 
