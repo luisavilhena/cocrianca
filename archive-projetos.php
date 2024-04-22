@@ -5,7 +5,10 @@
 get_header(); ?>
 
 <?php 
-$args = array( 'post_type' => 'projetos', 'posts_per_page' => -1 );
+$args = array(
+	'post_type' => 'projetos',
+	'posts_per_page' => -1 
+);
 $the_query = new WP_Query( $args ); 
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $new_link = str_replace('projetos','projeto', $actual_link)

@@ -1,11 +1,16 @@
 <?php
-
-get_header(); ?>
+    get_header();
+    $get_posts_blog = get_posts([
+        'taxonomy' => 'post',
+        'order'  => 'desc',
+        'posts_per_page' => 6,
+    ]);
+    $the_query = new WP_Query( $args ); 
+?>
 
 <main id="blog-list" class="structure-container">
     <div class="structure-container__all-content structure-container__side">
         <?php
-
             $latest_cpt = get_posts("post_type=post&numberposts=1");
             $Id= $latest_cpt[0]->ID;
             $Title= get_the_title($Id);
@@ -26,12 +31,7 @@ get_header(); ?>
         <h2>leia outros artigos</h2>
         <div class="cards-list">
         <?php 
-            $get_posts_blog = get_posts([
-                'taxonomy' => 'post',
-                'order'  => 'desc',
-                'posts_per_page' => 6,
-            ]);
-            foreach ($get_posts_blog as $key => $value) {
+            foreach ($the_query as $key => $value) {
                 $postId = $value->ID;
                 $url=get_permalink($value->ID);
                 $tags=get_the_tags($value->ID);
