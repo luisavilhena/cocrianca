@@ -3,7 +3,8 @@
     $args = get_posts([
         'post_type' => 'post',
         'post_status' => 'publish',
-        'order'  => 'desc',
+        'order'          => 'DES',
+        'orderby'        => 'date',
         'posts_per_page' => -1,
     ]);
     $the_query = new WP_Query( $args ); 
