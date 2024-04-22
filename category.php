@@ -5,8 +5,9 @@
 get_header(); ?>
 
 <?php 
-$args = array( 'post_type' => 'projetos', 
-							'posts_per_page' => -1 );
+$args = array( 
+	'post_type' => 'projetos', 
+	'posts_per_page' => -1 );
 $the_query = new WP_Query( $args ); 
 ?>
 	<div id="category" class="structure-container">

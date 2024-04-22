@@ -9,9 +9,8 @@ get_header(); ?>
   	<div>
   	<?php
   		get_breadcrumb();
-		
-  	?>
-  	<?php the_content(); ?>  		
+  		the_content(); 
+	?>  		
   	</div>
   </div>
 </main>

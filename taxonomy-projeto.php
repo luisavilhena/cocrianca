@@ -9,14 +9,14 @@ $current_url = home_url( add_query_arg( array(), $wp->request ) );
 $url_array = explode('/',$current_url);
 $retVal = !empty($url_array[5]) ? $url_array[5] : $url_array[4] ;
 $idObj = get_category_by_slug($retVal);
-$args = array( 'post_type' => 'projetos',
-							'posts_per_page' => -1,
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'projeto',
-									'field' => 'slug',
-									'terms' => $retVal,
-								)
+$args = array(  'post_type' => 'projetos',
+				'posts_per_page' => -1,
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'projeto',
+						'field' => 'slug',
+						'terms' => $retVal,
+					)
 				) );
 $the_query = new WP_Query( $args ); 
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
