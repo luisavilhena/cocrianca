@@ -3,9 +3,10 @@
     $get_posts_blog = get_posts([
         'taxonomy' => 'post',
         'order'  => 'desc',
-        'posts_per_page' => 6,
+        'posts_per_page' => -1,
     ]);
     $the_query = new WP_Query( $args ); 
+    echo $the_query;
 ?>
 
 <main id="blog-list" class="structure-container">
