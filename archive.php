@@ -1,6 +1,6 @@
 <?php
     get_header();
-    $get_posts_blog = get_posts([
+    $args = get_posts([
         'post_type' => 'post',
         'post_status' => 'publish',
         'order'  => 'desc',
