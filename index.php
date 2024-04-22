@@ -4,7 +4,7 @@ get_header(); ?>
 
 <?php while (have_posts()) : the_post(); ?>
 
-<main id="page-default" class="structure-container">
+<main id="page-default index" class="structure-container">
   <div class="structure-container__all-content">
   	<div>
   	<?php
