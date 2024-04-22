@@ -21,7 +21,7 @@ function cocrianca_add_custom_image_sizes() {
     add_image_size( 'horizontal-plus', 715, 225, true);
     add_image_size( 'quarter', 225, 225, true);
     //others
-    add_image_size('image_desktop_full_no_crop', 3000 , 3500, false);
+    add_image_size('image_desktop_full_no_crop', 2000 , 2500, false);
 }
 
 add_action('after_setup_theme', 'cocrianca_add_custom_image_sizes' );

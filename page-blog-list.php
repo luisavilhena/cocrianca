@@ -11,7 +11,7 @@ get_header(); ?>
 			$Id= $latest_cpt[0]->ID;
 			$Title= get_the_title($Id);
 			$Excerpt= get_the_excerpt($Id);
-			$Thumbnail=get_the_post_thumbnail($Id, 'horizontal-c');
+			$Thumbnail=get_the_post_thumbnail('horizontal-c');
 			$Author= get_the_author($Id);	
 			$Link = get_permalink($Id)			
 			?>
