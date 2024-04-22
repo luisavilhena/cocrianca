@@ -3,7 +3,7 @@
 
 get_header(); ?>
 
-<main id="blog-list" class="structure-container">
+<main id="blog-list" class="structure-container teste">
 	<?php while (have_posts()) : the_post(); ?>
 		<div class="structure-container__all-content structure-container__side">
 			<?php
