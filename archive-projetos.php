@@ -33,9 +33,15 @@ $new_link = str_replace('projetos','projeto', $actual_link);
 				 )) ?>
 				<div class="filter">
 				<?php foreach ( $terms as $term ) : ?>
-					<?php $class = ( strstr( $_SERVER['REQUEST_URI'], $term->slug ) !== false ) ? 'page-active' : ''; ?>
+					<?php 
+					$url_segments = explode( '/', rtrim( $_SERVER['REQUEST_URI'], '/' ) );
+					$last_segment = end( $url_segments );
+					$class = ( $last_segment === $term->slug ) ? 'page-active' : '';
+					 ?>
 					<a href="<?php echo esc_url( $new_link . $term->slug ); ?>">
-						<h3 class="<?php echo esc_attr( $class ); ?>"><?php echo esc_html( $term->name ); ?></h3>
+						<h3 class="<?php echo esc_attr( $class ); ?>">
+							<?php echo esc_html( $term->name ); ?>
+						</h3>
 					</a>
 				<?php endforeach; ?>
 			  </div>
