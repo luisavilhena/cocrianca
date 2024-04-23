@@ -49,8 +49,8 @@ $link = $correct_link[0];
 					<?php 
 					$class = ( strstr( $_SERVER['REQUEST_URI'], $term->slug ) !== false ) ? 'page-active' : ''; 
 					?>
-					<a href="<?php $link.'/projeto/'.esc_attr( $term->slug ); ?>">
-						<h3 class="<?php echo esc_attr( $class ); ?>"><?php echo esc_html( $term->name ); ?></h3>
+					<a class="<?php echo esc_attr( $class ); ?>" href="<?php $link.'/projeto/'.esc_attr( $term->slug ); ?>">
+						<h3><?php echo esc_html( $term->name ); ?></h3>
 					</a>
 			    <?php endforeach; ?>
 			  </div>

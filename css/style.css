@@ -1498,6 +1498,14 @@ footer .footer-about a:hover {
   text-transform: lowercase;
   font-weight: normal;
 }
+.filter a.page-active:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: gray;
+  bottom: 10px;
+}
 .filter a:hover:before {
   content: '';
   position: absolute;
