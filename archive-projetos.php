@@ -13,6 +13,8 @@ $the_query = new WP_Query( $args );
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $new_link = str_replace('projetos','projeto', $actual_link)
 
+if ($the_query->have_posts()):
+
 ?>
 	<div id="archive-projetos" class="structure-container">
 		<div class="carousel">
@@ -59,4 +61,7 @@ $new_link = str_replace('projetos','projeto', $actual_link)
 		</div>
 	</div>
 
-<?php get_footer(); ?>
+
+<?php 
+endif;
+get_footer(); ?>
