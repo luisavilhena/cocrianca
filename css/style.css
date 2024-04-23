@@ -1528,6 +1528,10 @@ div.caf-post-layout-container ul li a {
 }
 #blog-single .blog-single__author img {
   border-radius: 50%;
+  margin-right: 20px;
+}
+#blog-single .blog-single__author p:first-of-type {
+  letter-spacing: 0.3em;
 }
 #blog-single .blog-single__header {
   max-width: 800px;
