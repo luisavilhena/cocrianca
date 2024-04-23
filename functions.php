@@ -143,79 +143,24 @@ add_filter('upload_mimes', '_thz_enable_vcard_upload' );
 
 
 
-/**
-* Removes or edits the 'Protected:' part from posts titles
-*/
-function the_title_trim($title) {
 
-    $title = attribute_escape($title);
 
-    $findthese = array(
-        '#Protected:#',
-        '#Private:#',
-        '#Protegido:#'
-    );
-
-    $replacewith = array(
-        '', // What to replace "Protected:" with
-        '' // What to replace "Private:" with
-    );
-
-    $title = preg_replace($findthese, $replacewith, $title);
-    return $title;
-}
-add_filter('the_title', 'the_title_trim');
-
-// enable gutenberg for woocommerce
-function activate_gutenberg_product( $can_edit, $post_type ) {
- if ( $post_type == 'product' ) {
-        $can_edit = true;
-    }
-    return $can_edit;
-}
-add_filter( 'use_block_editor_for_post_type', 'activate_gutenberg_product', 10, 2 );
 
 // enable taxonomy fields for woocommerce with gutenberg on
 function enable_taxonomy_rest( $args ) {
     $args['show_in_rest'] = true;
     return $args;
 }
-add_filter( 'woocommerce_taxonomy_args_product_cat', 'enable_taxonomy_rest' );
-add_filter( 'woocommerce_taxonomy_args_product_tag', 'enable_taxonomy_rest' );
-
-/////////// 
-/**
- * Change number of products that are displayed per page (shop page)
- */
-add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
-
-function new_loop_shop_per_page( $cols ) {
-  // $cols contains the current number of products per page based on the value stored on Options –> Reading
-  // Return the number of products you wanna show per page.
-  $cols = 3;
-  return $cols;
-}
 
 
 
 
 
 
-/**
- * Remove product data tabs
- */
-add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
 
-function woo_remove_product_tabs( $tabs ) {
 
-    unset( $tabs['description'] );          // Remove the description tab
-    unset( $tabs['reviews'] );          // Remove the reviews tab
-    unset( $tabs['additional_information'] );   // Remove the additional information tab
 
-    return $tabs;
-}
 
-add_filter ('yith_wcan_use_wp_the_query_object', '__return_true');
 
 /**
 * Create taxonomy portfolio
