@@ -140,27 +140,32 @@ function _thz_enable_vcard_upload( $mime_types ){
 add_filter('upload_mimes', '_thz_enable_vcard_upload' );
 
 
-
-
-
-
-
-
-// enable taxonomy fields for woocommerce with gutenberg on
-function enable_taxonomy_rest( $args ) {
-    $args['show_in_rest'] = true;
-    return $args;
+//add breadcrumb
+function get_breadcrumb() {
+    echo ' <div class="breadcrumb structure-container" >
+    <div class="structure-container__content structure-container__side">
+    <div class="breadcrumb__content">
+    <a href="'.home_url().'" rel="nofollow">Página inicial</a>';
+    if (is_category() || is_single()) {
+        echo "&nbsp;&nbsp;>&nbsp;&nbsp;";
+        the_category(' &bull; ');
+            if (is_single()) {
+                echo " &nbsp;&nbsp;>&nbsp;&nbsp; ";
+                the_title();
+            }
+    } elseif (is_page()) {
+        echo "&nbsp;&nbsp;>&nbsp;&nbsp;";
+        echo the_title();
+    } elseif (is_search()) {
+        echo "&nbsp;&nbsp;>&nbsp;&nbsp;Search Results for... ";
+        echo '"<em>';
+        echo the_search_query();
+        echo '</em>"';
+    }
+    echo '</div>
+    </div>
+    </div>';
 }
-
-
-
-
-
-
-
-
-
-
 
 /**
 * Create taxonomy portfolio
@@ -242,33 +247,5 @@ function custom_taxonomy_projeto() {
     register_taxonomy( "projeto", [ "projetos" ], $args );
 }
 add_action( 'init', 'custom_taxonomy_projeto' );
-
-
-//add breadcrumb
-function get_breadcrumb() {
-    echo ' <div class="breadcrumb structure-container" >
-    <div class="structure-container__content structure-container__side">
-    <div class="breadcrumb__content">
-    <a href="'.home_url().'" rel="nofollow">Página inicial</a>';
-    if (is_category() || is_single()) {
-        echo "&nbsp;&nbsp;>&nbsp;&nbsp;";
-        the_category(' &bull; ');
-            if (is_single()) {
-                echo " &nbsp;&nbsp;>&nbsp;&nbsp; ";
-                the_title();
-            }
-    } elseif (is_page()) {
-        echo "&nbsp;&nbsp;>&nbsp;&nbsp;";
-        echo the_title();
-    } elseif (is_search()) {
-        echo "&nbsp;&nbsp;>&nbsp;&nbsp;Search Results for... ";
-        echo '"<em>';
-        echo the_search_query();
-        echo '</em>"';
-    }
-    echo '</div>
-    </div>
-    </div>';
-}
 
 
