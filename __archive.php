@@ -1,4 +1,3 @@
-oiiiiiiii
 <?php
     get_header();
     $args = get_posts([
