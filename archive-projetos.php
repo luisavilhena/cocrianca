@@ -5,8 +5,10 @@
 get_header(); ?>
 
 <?php 
+$args = array( 'post_type' => 'projetos', 'posts_per_page' => -1 );
+$the_query = new WP_Query( $args ); 
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$new_link = str_replace('projetos','projeto', $actual_link);
+$new_link = str_replace('projetos','projeto', $actual_link)
 
 ?>
 	<div id="archive-projetos" class="structure-container">
@@ -32,18 +34,11 @@ $new_link = str_replace('projetos','projeto', $actual_link);
 				 		'order' => 'ASC',
 				 )) ?>
 				<div class="filter">
-				<?php foreach ( $terms as $term ) : ?>
-					<?php 
-					$url_segments = explode( '/', rtrim( $_SERVER['REQUEST_URI'], '/' ) );
-					$last_segment = end( $url_segments );
-					$class = ( $last_segment === $term->slug ) ? 'page-active' : '';
-					 ?>
-					<a href="<?php echo esc_url( $new_link . $term->slug ); ?>">
-						<h3 class="<?php echo esc_attr( $class ); ?>">
-							<?php echo esc_html( $term->name ); ?>
-						</h3>
-					</a>
-				<?php endforeach; ?>
+			    <?php foreach ( $terms as $term ) : ?>
+			        <a href="<?php echo $new_link.esc_attr( $term->slug )?>">
+			            <h3><?php echo $term->name ?></h3>
+			        </a>
+			    <?php endforeach; ?>
 			  </div>
 			<div class="cards-list">
 				<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>

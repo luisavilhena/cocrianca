@@ -46,9 +46,12 @@ $link = $correct_link[0];
 					'order' => 'ASC',
 				)) ?>
 			    <?php foreach ( $terms as $term ) : ?>
-			        <a href="<?php echo $link.'/projeto/'.esc_attr( $term->slug )?>">
-			            <h3><?php echo $term->name ?></h3>
-			        </a>
+					<?php 
+					$class = ( strstr( $_SERVER['REQUEST_URI'], $term->slug ) !== false ) ? 'page-active' : ''; 
+					?>
+					<a href="<?php $link.'/projeto/'.esc_attr( $term->slug ); ?>">
+						<h3 class="<?php echo esc_attr( $class ); ?>"><?php echo esc_html( $term->name ); ?></h3>
+					</a>
 			    <?php endforeach; ?>
 			  </div>
 			<div class="cards-list">
