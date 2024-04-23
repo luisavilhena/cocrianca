@@ -2,7 +2,7 @@
 
 get_header(); ?>
 
-<?php while (have_posts()) : the_post(); ?>
+<?php if (have_posts()) : the_post(); ?>
 
 <main id="page-default index" class="structure-container">
   <div class="structure-container__all-content">
@@ -14,7 +14,7 @@ get_header(); ?>
   	</div>
   </div>
 </main>
-<?php endwhile; ?>
+<?php endif; ?>
 
 <?php
 get_footer();
