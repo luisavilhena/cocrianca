@@ -1,32 +1,38 @@
 <?php
 get_header();
 
+// Seção para recuperar as informações da taxonomia (termos)
 $current_url = home_url( add_query_arg( array(), $wp->request ) ); 
-$url_array = explode('/', $current_url);
+$url_array = explode('/',$current_url);
 $retVal = !empty($url_array[5]) ? $url_array[5] : $url_array[4] ;
 $idObj = get_category_by_slug($retVal);
 
+// Argumentos da consulta para ambas as seções
 $args = array(
     'post_type'      => 'projetos',
     'posts_per_page' => -1,
-    // Remova a restrição da taxonomia da consulta
-    // 'tax_query'   => array(
-    //     array(
-    //         'taxonomy' => 'projeto',
-    //         'field'    => 'slug',
-    //         'terms'    => $retVal,
-    //     )
-    // )
 );
 
+// Consulta para a seção da taxonomia
+if ($retVal) {
+    $args['tax_query'] = array(
+        array(
+            'taxonomy' => 'projeto',
+            'field'    => 'slug',
+            'terms'    => $retVal,
+        )
+    );
+}
+
+// Consulta para a seção do arquivo de projetos
 $the_query = new WP_Query( $args ); 
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$new_link = str_replace('projetos', 'projeto', $actual_link);
+$new_link = str_replace('projetos','projeto', $actual_link);
 $correct_link = explode('projeto', $new_link);
 $link = $correct_link[0];
 ?>
 
-<div id="taxonomy-projeto" class="structure-container">
+<div class="structure-container">
     <div class="carousel">
         <div id="carousel-img">
             <div class="item" style="background-image: url('<?php echo get_template_directory_uri() ?>/resources/8.jpg');">
@@ -39,16 +45,19 @@ $link = $correct_link[0];
     </div>
     <div class="structure-container__content structure-container__side">
         <div class="filter">
-            <?php $terms = get_terms('projeto', array(
-                'orderby' => 'id',
-                'order'   => 'ASC',
-            )); ?>
-            <?php foreach ( $terms as $term ) : ?>
-                <?php $class = ( strstr( $_SERVER['REQUEST_URI'], $term->slug ) !== false ) ? 'page-active' : ''; ?>
-                <a href="<?php echo $link . '/projeto/' . esc_attr( $term->slug ); ?>" class="<?php echo esc_attr( $class ); ?>">
-                    <h3><?php echo esc_html( $term->name ); ?></h3>
-                </a>
-            <?php endforeach; ?>
+            <?php 
+            // Seção da taxonomia
+            if ($retVal) {
+                $terms = get_terms('projeto', array(
+                    'orderby'=> 'id',
+                    'order' => 'ASC',
+                ));
+                foreach ( $terms as $term ) {
+                    $class = ( strstr( $_SERVER['REQUEST_URI'], $term->slug ) !== false ) ? 'page-active' : '';
+                    echo '<a href="' . $link . '/projeto/' . esc_attr( $term->slug ) . '" class="' . esc_attr( $class ) . '"><h3>' . esc_html( $term->name ) . '</h3></a>';
+                }
+            }
+            ?>
         </div>
         <div class="cards-list">
             <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
