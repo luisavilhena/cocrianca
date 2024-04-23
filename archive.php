@@ -9,6 +9,8 @@
     ]);
     $the_query = new WP_Query( $args ); 
     echo $the_query;
+    if ($the_query->have_posts()) :
+
 ?>
 
 <main id="blog-list" class="structure-container">
@@ -68,4 +70,5 @@
 
 
 <?php
+endif;
 get_footer();

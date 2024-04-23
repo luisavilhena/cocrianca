@@ -11,9 +11,7 @@ $args = array(
 );
 $the_query = new WP_Query( $args ); 
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$new_link = str_replace('projetos','projeto', $actual_link)
-
-if ($the_query->have_posts()):
+$new_link = str_replace('projetos','projeto', $actual_link);
 
 ?>
 	<div id="archive-projetos" class="structure-container">
@@ -61,7 +59,4 @@ if ($the_query->have_posts()):
 		</div>
 	</div>
 
-
-<?php 
-endif;
-get_footer(); ?>
+<?php get_footer(); ?>
