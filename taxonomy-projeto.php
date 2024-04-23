@@ -46,10 +46,8 @@ $link = $correct_link[0];
 					'order' => 'ASC',
 				)) ?>
 			    <?php foreach ( $terms as $term ) : ?>
-					<?php 
-					$class = ( strstr( $_SERVER['REQUEST_URI'], $term->slug ) !== false ) ? 'page-active' : ''; 
-					?>
-					<a class="<?php echo esc_attr( $class ); ?>" href="<?php $link.'/projeto/'.esc_attr( $term->slug ); ?>">
+					<?php $class = ( strstr( $_SERVER['REQUEST_URI'], $term->slug ) !== false ) ? 'page-active' : ''; ?>
+					<a  href="<?php echo $link.'/projeto/'.esc_attr( $term->slug ); ?>" class="<?php echo esc_attr( $class ); ?>">
 						<h3><?php echo esc_html( $term->name ); ?></h3>
 					</a>
 			    <?php endforeach; ?>
