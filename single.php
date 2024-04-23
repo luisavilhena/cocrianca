@@ -10,6 +10,12 @@ get_header(); ?>
 				<h1><?php the_title(); ?></h1>
 				<div><?php the_excerpt();?></div>
 				<div>
+					<?php echo get_avatar( get_the_author_meta( 'ID' ), 32 ); ?>
+					<div>
+						<p>Escrito por: <?php the_author(); ?></p>
+						<p><?php the_author_meta( 'description' ); ?></p>
+					</div>
+
 					<?php echo do_shortcode('[publishpress_authors_box layout="boxed"]')?>
 				</div>
 				<?php ?>
