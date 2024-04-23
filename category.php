@@ -9,8 +9,7 @@ oiiiiiiii
         'posts_per_page' => -1,
     ]);
     $the_query = new WP_Query( $args ); 
-    echo $the_query;
-    if ($the_query->have_posts()) :
+
 
 ?>
 
@@ -71,5 +70,4 @@ oiiiiiiii
 
 
 <?php
-endif;
 get_footer();

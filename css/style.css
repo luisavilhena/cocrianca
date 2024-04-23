@@ -1970,18 +1970,19 @@ div.caf-post-layout-container ul li a {
     display: none;
   }
 }
-#project-list {
-  min-height: 100vh;
-}
-#project-list .pagination {
+.pagination {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#project-list .pagination a,
-#project-list .pagination span {
+.pagination a,
+.pagination span {
   padding: 10px;
   color: #F4920B;
+  text-decoration: none;
+}
+#project-list {
+  min-height: 100vh;
 }
 #project-list .project-list {
   display: flex;
