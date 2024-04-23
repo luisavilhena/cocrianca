@@ -126,7 +126,7 @@ add_action('after_setup_theme', 'my_theme_setup');
 //////////
 //excerpt//
 ///////////
-add_post_type_support( 'page', 'excerpt' );
+add_post_type_support( 'post', 'excerpt' );
 
 
 ////////
