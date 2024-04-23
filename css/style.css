@@ -1973,6 +1973,16 @@ div.caf-post-layout-container ul li a {
 #project-list {
   min-height: 100vh;
 }
+#project-list .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#project-list .pagination a,
+#project-list .pagination span {
+  padding: 10px;
+  color: #F4920B;
+}
 #project-list .project-list {
   display: flex;
   justify-content: center;

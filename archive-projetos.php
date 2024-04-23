@@ -4,7 +4,7 @@ get_header();
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 $args = array(
     'post_type'      => 'projetos',
-    'posts_per_page' => 10,
+    'posts_per_page' => 9,
     'paged'          => $paged
 );
 $the_query = new WP_Query( $args ); 
@@ -52,13 +52,10 @@ $new_link = str_replace('projetos','projeto', $actual_link);
         </div>
         
         <?php
-        // Adicionando a paginação
         echo '<div class="pagination">';
         echo paginate_links( array(
-            'total'     => $the_query->max_num_pages,
+            'pages'     => $the_query->max_num_pages,
             'current'   => $paged,
-            'prev_text' => __( '&laquo;' ),
-            'next_text' => __( '&raquo;' ),
         ) );
         echo '</div>';
         ?>
